@@ -1,6 +1,6 @@
 <?php
-require 'logic/info-escuela.php';
-require 'logic/FechaHora.php';
+require '../../logic/info-escuela.php';
+require '../../logic/FechaHora.php';
 ?>
 
 <!DOCTYPE html>
@@ -9,16 +9,16 @@ require 'logic/FechaHora.php';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="assets\css\estilos.css">
+    <link rel="stylesheet" href="..\..\assets\css\estilos.css">
     <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
-    <title>SCE: Fidel Ferrer</title>
+    <title>SCE: Control de Usuarios</title>
 </head>
 <body>
     <header>
         <div class = "head-inicio">
             <h1>Sistema de Control Escolar</h1>
             <h2>Fidel Ferrer</h2>
-            <img class="logo-escuela" src="assets\img\logo.jpg">
+            <img class="logo-escuela" src="..\..\assets\img\logo.jpg">
             <h5 style="text-align: left; margin: 0;" >PRIMARIA: <?php echo $Nombre; ?> | CCT: <?php echo $CCT; ?>   | CICLO ESCOLAR: <?= Ciclo() ?> | FECHA:  <?= FechaActual() ?>  </h5>
         </div>
     </header>
@@ -39,8 +39,14 @@ require 'logic/FechaHora.php';
                     <li><a href="#">Lista de Grupos</a></li>
                 </ul>
             </li>
-            <li><a href="#">Evaluaciones</a></li>
+            <li><a href="#">Evaluaciones</a>
+                <ul>
+                    <li><a href="#">Temporada</a></li>
+                    <li><a href="#">Evaluar</a></li>
+                </ul>
+            </li>
             <li><a href="#">Estadisticas</a></li>
+            
             <li><a href="">Escuela</a>
                 <ul>
                     <li><a href="#">Informacion</a></li>
@@ -50,6 +56,10 @@ require 'logic/FechaHora.php';
         </ul>
     </nav>
 
+    <section>
+        <h3>Control de Usuarios</h3>
+            
+    </section>
 
     <?php if (!empty($mensaje)):  ?>
         <p  style = "text-align: center;" > <?= $mensaje ?> </p>

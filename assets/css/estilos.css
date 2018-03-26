@@ -76,6 +76,57 @@ h1, h2{
 
 }
 
+.regis-form{
+    background: #002E62;
+    width: 40%;
+    height: 50%;
+    margin: 40px auto;
+    padding:20px;
+    border-radius: 10px;
+}
+
+.regis-form>label{
+    display:block;
+    color:#ffffff;
+    margin:auto;
+    margin:10px;
+   
+}
+
+.regis-form>input{
+    display:block;
+    width: 100%;
+    border:none;
+    border-radius:5px;
+    padding:4px;
+}
+
+
+.regis-form>.login-form__submit{
+    width:45%;
+    margin-top:20px;
+}
+
+.regis-grado{
+    display:block;
+    width:100%;
+    padding-top:10px;
+}
+
+.regis-grado>h3{
+    display: inline;
+    text-align: center;
+    font-size:17px;
+    margin-right:10px;
+    color:#ffffff;
+}
+
+section>h3{
+    text-align: center;
+}
+
+
+
 
 /*
 

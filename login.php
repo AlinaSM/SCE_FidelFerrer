@@ -16,10 +16,10 @@ function consultarUsuario($conexion, $usuario, $contrasena){
             
             switch($tupla['puesto']){
                 case 'DIRECTOR':
-                    header("Location: inicio-admin.php");
+                    header("Location: inicio-direc.php");
                 break;
                 case 'SECRETARIO':
-                    header("Location: inicio.php");
+                    header("Location: inicio-secre.php");
                 break;
             }
         }
