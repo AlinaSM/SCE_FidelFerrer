@@ -1,0 +1,138 @@
+*{
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'Ubuntu', sans-serif;
+    margin: 0;
+}
+
+.login-form{
+    width: 25%;
+    background-color: #002E62;
+    margin: auto;
+    padding: 2em 1em;
+    color: #FFFFFF;
+    border-radius: 5%;
+    height: 50%;
+}
+
+.login-form__input{
+    display: block;
+    width: 100%;
+    margin-bottom: 3em;
+    line-height: 2;
+    border-radius: 5px;
+    border:none;
+    padding: 0.1em;
+    padding-left: 0.5em;
+    font-size: 15px;
+  
+}
+
+.login-form__submit{
+    display: block;
+    width: 50%;
+    margin: auto;
+    font-size: 130%;
+    padding: 5px;
+    background-color: #ECC200;
+    border: none;
+}
+.login-form__submit:hover{
+    background-color: rgb(218, 179, 6); 
+
+}
+
+.login-form__label{
+    margin-bottom: 2em;
+    line-height: 1.5;
+    padding: 10px 0px;
+  
+}
+
+.head-inicio{
+    display: block;
+    background-color: #002E62;
+    width: 100%;
+    height: 30%;
+
+    padding: 10px;
+    text-align: center;    
+    color: #FFFFFF;
+}
+
+h1, h2{
+    display: block;
+    text-align: center;
+}
+
+
+.logo-escuela{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 10%;
+
+}
+
+
+/*
+
+
+Menu desplegable
+
+
+*/
+
+/*Estilos generalaes*/
+nav ul{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+nav a{
+    text-decoration: none;
+    color: white;
+    display: block;
+    padding: 0 2em;
+}
+
+nav a:hover{
+    background: #4b4b4b;
+}
+
+
+nav li{
+    line-height: 3em;
+    position: relative;
+}
+nav li ul{
+    position: absolute;
+}
+/*Primer Nivel*/
+nav > ul {
+    background: #333333;
+    display: table;
+    width: 100%;
+}
+nav > ul > li{
+    float: left;
+}
+
+/*Segundo Nivel*/
+nav li li{
+    background: #333333;
+    max-height: 0;
+    overflow: hidden;
+    transition:  all 0.2s;
+    width: 220px;
+    
+}
+
+nav li:hover > ul>li{
+    top: 100%;
+    max-height: 1000px;
+}
+
