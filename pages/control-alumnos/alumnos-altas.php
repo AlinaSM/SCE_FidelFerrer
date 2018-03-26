@@ -43,20 +43,20 @@ require '../../logic/FechaHora.php';
         <h3>Registro de Alumno</h3>
         <form action="" method="POST" class="regis-form">
             <label>Nombre</label>
-            <input type="text">
+            <input type="text" required>
             <label>Paterno</label>
-            <input type="text">
+            <input type="text" required>
             <label>Materno</label>
-            <input type="text">
+            <input type="text" required>
             <label>CURP</label>
-            <input type="text">
+            <input type="text" required>
             <label>Correo Electronico</label>
-            <input type="text">
+            <input type="email" required>
             
             <div class="regis-grado">
                 <h3>Elija grado y grupo: </h3>
 
-                <select  name="opcion-grado">
+                <select  name="opcion-grado" required>
                     <option value="" disabled selected>GRADO</option>
                     <option value="1">1</option>
                     <option value="2">2</option>
@@ -64,6 +64,11 @@ require '../../logic/FechaHora.php';
                     <option value="4">4</option>
                     <option value="5">5</option>
                     <option value="6">6</option>
+                </select>
+                <select  name="opcion-grupo" required>
+                    <option value="" disabled selected>GRUPO</option>
+                    <option value="A">A</option>
+
                 </select>
             </div>
 

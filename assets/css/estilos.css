@@ -121,6 +121,10 @@ h1, h2{
     color:#ffffff;
 }
 
+.regis-grado>select{
+    margin-right: 20px;
+}
+
 section>h3{
     text-align: center;
 }
