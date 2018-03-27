@@ -11,7 +11,7 @@ require '../../logic/FechaHora.php';
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="..\..\assets\css\estilos.css">
     <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
-    <title>SCE: Control de Usuarios</title>
+    <title>SCE: Fidel Ferrer</title>
 </head>
 <body>
     <header>
@@ -19,7 +19,7 @@ require '../../logic/FechaHora.php';
             <h1>Sistema de Control Escolar</h1>
             <h2>Fidel Ferrer</h2>
             <img class="logo-escuela" src="..\..\assets\img\logo.jpg">
-            <h5 style="text-align: left; margin: 0;" >PRIMARIA: <?php echo $Nombre; ?> | CCT: <?php echo $CCT; ?>   | CICLO ESCOLAR: <?= Ciclo() ?> | FECHA:  <?= FechaActual() ?>  </h5>
+            <h5 style="text-align: left = 10px;; margin: 0;" >PRIMARIA: <?php echo $Nombre; ?> | CCT: <?php echo $CCT; ?>   | CICLO ESCOLAR: <?= Ciclo() ?> | FECHA:  <?= FechaActual() ?>  </h5>
         </div>
     </header>
 
@@ -32,34 +32,26 @@ require '../../logic/FechaHora.php';
                     <li><a href="#">Bitacora</a></li>
                 </ul>
             </li>
-            <li><a href="">Control Alumnos</a>
-                <ul>
-                    <li><a href="#">Altas</a></li>
-                    <li><a href="#">Bajas</a></li>
-                    <li><a href="#">Lista de Grupos</a></li>
-                </ul>
-            </li>
-            <li><a href="#">Evaluaciones</a>
-                <ul>
-                    <li><a href="#">Temporada</a></li>
-                    <li><a href="#">Evaluar</a></li>
-                </ul>
-            </li>
-            <li><a href="#">Estadisticas</a></li>
             
-            <li><a href="">Escuela</a>
-                <ul>
-                    <li><a href="#">Informacion</a></li>
-                </ul>
-            </li>
             <li style="float:right"><a href="">Cerrar Sesion</a></li>
         </ul>
     </nav>
 
     <section>
-        <h3>Control de Usuarios</h3>
-            
+        <h3>Registro de Usuarios</h3>
+        <form action="" method="POST" class="regis-form">
+            <label>Nombre de Usuario</label>
+            <input type="text" name="txtUsuario" required>
+            <label>Contraseña</label>
+            <input type="password" name="txtContrasena" required>
+            <label>Comfirmar contraseña </label>
+            <input type="password" name="txtContrasenaConfirma" required>
+
+            <input type="submit" value="Registrar" class="login-form__submit">
+        </form>
+
     </section>
+
 
     <?php if (!empty($mensaje)):  ?>
         <p  style = "text-align: center;" > <?= $mensaje ?> </p>
