@@ -25,31 +25,31 @@ require 'logic/FechaHora.php';
 
     <nav>
         <ul>
-            <li><a href="">Inicio</a></li>
-            <li><a href="">Control Usuarios</a>
+            <li><a href="#">Inicio</a></li>
+            <li><a>Control Usuarios</a>
                 <ul>
-                    <li><a href="#">Gestionar Usuarios</a></li>
-                    <li><a href="#">Bitacora</a></li>
+                    <li><a href="pages\control-usuarios\control-usuarios.php">Gestionar Usuarios</a></li>
+                    <li><a href="pages\control-usuarios\bitacora-entradas.php">Bitacora</a></li>
                 </ul>
             </li>
-            <li><a href="">Control Alumnos</a>
+            <li><a>Control Alumnos</a>
                 <ul>
-                    <li><a href="#">Altas</a></li>
-                    <li><a href="#">Bajas</a></li>
-                    <li><a href="#">Lista de Grupos</a></li>
+                    <li><a href="pages\control-alumnos\alumnos-altas.php">Altas</a></li>
+                    <li><a href="pages\control-alumnos\alumnos-bajas.php">Bajas</a></li>
+                    <li><a href="pages\control-alumnos\listado-grupos.php">Lista de Grupos</a></li>
                 </ul>
             </li>
-            <li><a href="#">Evaluaciones</a>
+            <li><a>Evaluaciones</a>
                 <ul>
-                    <li><a href="#">Temporada</a></li>
-                    <li><a href="#">Evaluar</a></li>
+                    <li><a href="pages\evaluaciones\inicio-ciclo.php">Temporada</a></li>
+                    <li><a href="pages\evaluaciones\inicio.php">Evaluar</a></li>
                 </ul>
             </li>
-            <li><a href="#">Estadisticas</a></li>
+            <li><a href="pages\estadisticas\estadisticas.php">Estadisticas</a></li>
             
-            <li><a href="">Escuela</a>
+            <li><a>Escuela</a>
                 <ul>
-                    <li><a href="#">Informacion</a></li>
+                    <li><a href="pages\escuela\informacion.php">Informacion</a></li>
                 </ul>
             </li>
             <li style="float:right"><a href="">Cerrar Sesion</a></li>
