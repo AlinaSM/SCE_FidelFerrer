@@ -11,6 +11,7 @@ require '../../logic/FechaHora.php';
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="..\..\assets\css\estilos.css">
     <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+    <script src="..\..\assets\js\script.js"></script>
     <title>SCE: Fidel Ferrer</title>
 </head>
 <body>
@@ -19,7 +20,7 @@ require '../../logic/FechaHora.php';
             <h1>Sistema de Control Escolar</h1>
             <h2>Fidel Ferrer</h2>
             <img class="logo-escuela" src="..\..\assets\img\logo.jpg">
-            <h5 style="text-align: left = 10px;; margin: 0;" >PRIMARIA: <?php echo $Nombre; ?> | CCT: <?php echo $CCT; ?>   | CICLO ESCOLAR: <?= Ciclo() ?> | FECHA:  <?= FechaActual() ?>  </h5>
+            <h5 style="text-align: left = 10px; margin: 0;" >PRIMARIA: <?php echo $Nombre; ?> | CCT: <?php echo $CCT; ?>   | CICLO ESCOLAR: <?= Ciclo() ?> | FECHA:  <?= FechaActual() ?>  </h5>
         </div>
     </header>
 
@@ -41,22 +42,29 @@ require '../../logic/FechaHora.php';
 
     <section>
         <h3>Registro de Alumno</h3>
-        <form action="" method="POST" class="regis-form">
+
+        <form action="..\..\logic\control-alumnos\altas.php" method="POST" name="frmAltaAlumno" class="regis-form">
+
             <label>Nombre</label>
-            <input type="text" required>
+            <input type="text" name="txtNombre" id="idNombre" required >
+
             <label>Paterno</label>
-            <input type="text" required>
+            <input type="text" name="txtPaterno" id="idPaterno" required>
+
             <label>Materno</label>
-            <input type="text" required>
+            <input type="text" name="txtMaterno" id="idMaterno" required>
+
             <label>CURP</label>
-            <input type="text" required>
+            <input type="text" name="txtCURP" id="idCURP" required>
+
             <label>Correo Electronico</label>
-            <input type="email" required>
+            <input type="email" name="txtEmail" id="idEmail" required>
             
             <div class="regis-grado">
+
                 <h3>Elija grado y grupo: </h3>
 
-                <select  name="opcion-grado" required>
+                <select  name="comboGrado" id="idGrado" required >
                     <option value="" disabled selected>GRADO</option>
                     <option value="1">1</option>
                     <option value="2">2</option>
@@ -65,14 +73,15 @@ require '../../logic/FechaHora.php';
                     <option value="5">5</option>
                     <option value="6">6</option>
                 </select>
-                <select  name="opcion-grupo" required>
+
+                <select  name="comboGrupo" id="idGrupo" required >
                     <option value="" disabled selected>GRUPO</option>
                     <option value="A">A</option>
-
                 </select>
+
             </div>
 
-            <input type="submit" value="Enviar" class="login-form__submit">
+            <input type="submit" value="Registrar" id="btnAltaAlumnos" class="login-form__submit">
         </form>
 
     </section>
