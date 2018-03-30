@@ -30,7 +30,7 @@ try{
     }
 
 }catch(PDOException $e){
-    $mensaje = "Error al generar la consulta a la base de datos: " . $e->getMessage();
+    echo "Error: " . $e->getMessage();
 }
 
 
