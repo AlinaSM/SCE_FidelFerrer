@@ -1,11 +1,11 @@
 <?php
 require 'logic\FechaHora.php';
+require 'logic\usuarios\MetodosBitacora.php';
 
 $mensaje_error = null;
-$fecha_sist = FechaHoraSistema();
 
 function consultarUsuario($conexion, $usuario, $contrasena){
-    
+   $fecha_sist = FechaHoraSistema(); 
     try{
         $consulta = "SELECT id, puesto, usuario, contrasenia FROM usuarios WHERE usuario = '$usuario';";
         $resultado = $conexion->query($consulta);
@@ -13,7 +13,9 @@ function consultarUsuario($conexion, $usuario, $contrasena){
 
         if($tupla && $contrasena == $tupla['contrasenia']){
             $_SESSION['user_id'] = $tupla['id'];
-            
+
+            registrarBitacora($usuario, $fecha_sist, $conexion);
+
             switch($tupla['puesto']){
                 case 'DIRECTOR':
                     header("Location: inicio-direc.php");

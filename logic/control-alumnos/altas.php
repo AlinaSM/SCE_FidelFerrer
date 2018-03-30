@@ -30,16 +30,16 @@ $existeAlumno = existeAlumno($curp, $conexion);
 
 if($existeAlumno){
    echo "El alumno ya esta registrado en la base de datos."; 
-   header('Location: ../../pages/control-alumnos/error.php');
+   header('Location: ../../pages/control-alumnos/confirmar.php?op=yaExiste');
 }else{
     if(!$salonLleno){
         //Codigal para hacer todo el desmadre de la alta al alumno!!!
         altaAlumno($curp, $paterno, $materno,$nombre,$email,$genero,$fecha_nac, $conexion);
         asignarSalon($curp, $idCiclo, $idSalon, $conexion);
-        header('Location: ../../pages/control-alumnos/exito.php');
+        header('Location: ../../pages/control-alumnos/confirmar.php?op=exito');
     }else{
-        header('Location: ../../pages/control-alumnos/error.php');
-        echo "El salon esta lleno.";
+        header('Location: ../../pages/control-alumnos/confirmar.php?op=noCabe');
+
     }
 }
 

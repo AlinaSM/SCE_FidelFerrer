@@ -1,8 +1,6 @@
 <?php
-require '../../logic/conexion.php';
 require '../../logic/info-escuela.php';
 require '../../logic/FechaHora.php';
-require '../../logic/usuarios/MetodosBitacora.php';
 
 ?>
 
@@ -14,6 +12,7 @@ require '../../logic/usuarios/MetodosBitacora.php';
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="..\..\assets\css\estilos.css">
     <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+    <script src="..\..\assets\js\scriptUsuarios.js"></script>
     <title>SCE: Fidel Ferrer</title>
 </head>
 <body>
@@ -42,9 +41,17 @@ require '../../logic/usuarios/MetodosBitacora.php';
     </nav>
 
     <section>
-        <?php
-            consultarBitacora($conexion);
-        ?>
+        <h3>Registro de Usuarios</h3>
+        <form action="..\..\logic\usuarios\altas.php" name="frmRegistro" method="POST" class="regis-form">
+            <label>Nombre de Usuario</label>
+            <input type="text" name="txtUsuario" required>
+            <label>Contraseña</label>
+            <input type="password" name="txtContrasena" required>
+            <label>Comfirmar contraseña </label>
+            <input type="password" name="txtContrasenaConfirma" required>
+
+            <input type="submit" value="Registrar" id="btnRegistrar" class="login-form__submit">
+        </form>
 
     </section>
 

@@ -25,11 +25,11 @@ require '../../logic/FechaHora.php';
 
     <nav>
         <ul>
-            <li><a href="">Inicio</a></li>
+            <li><a href="..\..\inicio-direc.php">Inicio</a></li>
             <li><a href="">Control Usuarios</a>
                 <ul>
                     <li><a href="#">Gestionar Usuarios</a></li>
-                    <li><a href="#">Bitacora</a></li>
+                    <li><a href="bitacora-entradas.php">Bitacora</a></li>
                 </ul>
             </li>
             
@@ -37,20 +37,7 @@ require '../../logic/FechaHora.php';
         </ul>
     </nav>
 
-    <section>
-        <h3>Registro de Usuarios</h3>
-        <form action="" method="POST" class="regis-form">
-            <label>Nombre de Usuario</label>
-            <input type="text" name="txtUsuario" required>
-            <label>Contraseña</label>
-            <input type="password" name="txtContrasena" required>
-            <label>Comfirmar contraseña </label>
-            <input type="password" name="txtContrasenaConfirma" required>
-
-            <input type="submit" value="Registrar" class="login-form__submit">
-        </form>
-
-    </section>
+    
 
 
     <?php if (!empty($mensaje)):  ?>

@@ -56,7 +56,6 @@ function validarFormAlumnosAltas(){
 
 }
 
-// SAMA950215MGRLNL02
 
 window.onload = function(){
     document.getElementById("btnAltaAlumnos").onclick = validarFormAlumnosAltas;

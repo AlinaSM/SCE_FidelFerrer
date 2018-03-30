@@ -26,9 +26,10 @@ require 'logic/FechaHora.php';
     <nav>
         <ul>
             <li><a href="#">Inicio</a></li>
-            <li><a>Control Usuarios</a>
+            <li><a href="">Control Usuarios</a>
                 <ul>
-                    <li><a href="pages\control-usuarios\control-usuarios.php">Gestionar Usuarios</a></li>
+                    <li><a href="pages\control-usuarios\altas-users.php">Registrar Usuario</a></li>
+                    <li><a href="pages\control-usuarios\bajas-users.php">Eliminar Usuario</a></li>
                     <li><a href="pages\control-usuarios\bitacora-entradas.php">Bitacora</a></li>
                 </ul>
             </li>
