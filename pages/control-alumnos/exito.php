@@ -1,10 +1,8 @@
 <?php
 require '../../logic/info-escuela.php';
 require '../../logic/FechaHora.php';
-require '../../logic/ciclos.php';
-require '../../logic/conexion.php';
-require '../../logic/control-alumnos/consultas.php';
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -15,7 +13,7 @@ require '../../logic/control-alumnos/consultas.php';
     <link rel="stylesheet" href="..\..\assets\css\estilos.css">
     <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
     <script src="..\..\assets\js\script.js"></script>
-    <title>Lista de Grupos</title>
+    <title>SCE: Fidel Ferrer</title>
 </head>
 <body>
     <header>
@@ -45,42 +43,8 @@ require '../../logic/control-alumnos/consultas.php';
 
     <section>
 
-        <form action="" name="formListaGrupos" method="GET">
-        <div class="regis-grado">
+        <h1>Exito al registrar al alumno.</h1>
 
-        <h3 style="color:black;" >Elija ciclo escolar, grado y grupo: </h3>
-
-        <select  name="comboCiclo" id="idCiclo" required >
-            <option value="" disabled selected>CICLO</option>
-            <?php seleccionarCiclo($conexion); ?>
-        </select>
-
-
-        <select  name="comboGrado" id="idGrado" required >
-            <option value="" disabled selected>GRADO</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-        </select>
-
-        <select  name="comboGrupo" id="idGrupo" required >
-            <option value="" disabled selected>GRUPO</option>
-            <option value="A">A</option>
-        </select>
-        <input type="submit" value="Consultar" >
-
-        </div>
-        
-        </form>
-
-    </section>
-    <section>
-        <?php
-            CrearTabla(1, 11, $conexion);
-        ?>
     </section>
 
 

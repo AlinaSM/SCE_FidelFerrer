@@ -191,3 +191,36 @@ nav li:hover > ul>li{
     max-height: 1000px;
 }
 
+
+
+/*
+
+    TABLAS DE TONTERIAS
+
+*/
+
+.tablaAlumnos{
+    margin:3% auto;
+    width:60%;
+    font-size:14px;
+}
+
+.tablaAlumnos td, .tablaAlumnos th{
+    border: 1px solid #ddd;
+    padding:4px;
+}
+
+
+
+.tablaAlumnos tr:hover{
+    background-color: #ddd;
+}
+
+.tablaAlumnos th{
+    padding-top:12px;
+    padding-bottom:12px;
+    text-align:left;
+    color:white;
+    background-color:#002E62;
+    font-size:16px;
+}

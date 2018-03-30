@@ -1,6 +1,7 @@
 <?php
 require '../../logic/info-escuela.php';
 require '../../logic/FechaHora.php';
+
 ?>
 
 <!DOCTYPE html>
@@ -12,7 +13,7 @@ require '../../logic/FechaHora.php';
     <link rel="stylesheet" href="..\..\assets\css\estilos.css">
     <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
     <script src="..\..\assets\js\script.js"></script>
-    <title>SCE: Fidel Ferrer</title>
+    <title> Registro de Alumno </title>
 </head>
 <body>
     <header>
@@ -26,13 +27,13 @@ require '../../logic/FechaHora.php';
 
     <nav>
         <ul>
-            <li><a href="">Inicio</a></li>
+            <li><a href="..\..\inicio-direc.php">Inicio</a></li>
             
             <li><a href="">Control Alumnos</a>
                 <ul>
-                    <li><a href="#">Altas</a></li>
-                    <li><a href="#">Bajas</a></li>
-                    <li><a href="#">Lista de Grupos</a></li>
+                    <li><a href="alumnos-altas.php">Altas</a></li>
+                    <li><a href="alumnos-bajas.php">Bajas</a></li>
+                    <li><a href="listado-grupos.php">Lista de Grupos</a></li>
                 </ul>
             </li>
   
@@ -40,7 +41,7 @@ require '../../logic/FechaHora.php';
         </ul>
     </nav>
 
-    <section>
+    <section id = "contenido" >
         <h3>Registro de Alumno</h3>
 
         <form action="..\..\logic\control-alumnos\altas.php" method="POST" name="frmAltaAlumno" class="regis-form">
@@ -85,6 +86,8 @@ require '../../logic/FechaHora.php';
         </form>
 
     </section>
+
+ 
 
 
     <?php if (!empty($mensaje)):  ?>
