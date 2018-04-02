@@ -3,7 +3,7 @@ require '../../logic/info-escuela.php';
 require '../../logic/FechaHora.php';
 require '../../logic/ciclos.php';
 require '../../logic/conexion.php';
-require '../../logic/control-alumnos/consultas.php';
+
 ?>
 
 <!DOCTYPE html>
@@ -45,7 +45,7 @@ require '../../logic/control-alumnos/consultas.php';
 
     <section>
 
-        <form action="" name="formListaGrupos" method="GET">
+        <form action="..\..\logic\salones\consultar-salon.php" name="formListaGrupos" method="GET">
         <div class="regis-grado">
 
         <h3 style="color:black;" >Elija ciclo escolar, grado y grupo: </h3>
@@ -70,7 +70,8 @@ require '../../logic/control-alumnos/consultas.php';
             <option value="" disabled selected>GRUPO</option>
             <option value="A">A</option>
         </select>
-        <input type="submit" value="Consultar" >
+
+        <input type="submit" value="Consultar" id="conslutar" >
 
         </div>
         
@@ -79,7 +80,11 @@ require '../../logic/control-alumnos/consultas.php';
     </section>
     <section>
         <?php
-            CrearTabla(1, 11, $conexion);
+        require '../../logic/salones/consultar-salon.php';
+            $op = $_GET['op'];
+            if($op=='mostrar'){
+                CrearTabla($_GET['idCiclo'], $_GET['idSalon'], $conexion);
+            }
         ?>
     </section>
 

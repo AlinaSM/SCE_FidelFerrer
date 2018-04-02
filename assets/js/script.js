@@ -20,7 +20,7 @@ function calcularFechaNacimiento(CURP){
 
 function validarNombreApellido(nombre){
     nombre = nombre.toUpperCase();
-    var patron = /^[a-zA-Z\s]*$/;
+    var patron = /^[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]*$/;
     var validado = nombre.match(patron);
 
     if(validado){     
@@ -30,20 +30,18 @@ function validarNombreApellido(nombre){
     }
 }
 
-
-
 function validarFormAlumnosAltas(){
     var validacion = true;
 
-     if(!validarNombreApellido(document.getElementById("idNombre").value)){
+     if( !validarNombreApellido(document.getElementById("idNombre").value) ){
         validacion = false;
-    }else if(!validarNombreApellido(document.getElementById("idPaterno").value)){
+    }else if( !validarNombreApellido(document.getElementById("idPaterno").value) ){
         validacion = false;
-    }else if(!validarNombreApellido(document.getElementById("idMaterno").value)){
+    }else if( !validarNombreApellido(document.getElementById("idMaterno").value) ){
         validacion = false;
-    }else if(!validarCurp(document.getElementById("idCURP").value)){
+    }else if( !validarCurp(document.getElementById("idCURP").value) ){
         validacion = false;
-    }else if(!document.getElementById("idEmail").value){
+    }else if( !document.getElementById("idEmail").value ){
         validacion = false;
     }
 
@@ -51,7 +49,6 @@ function validarFormAlumnosAltas(){
         document.validarFormAlumnosAltas.submit();
     }else{
         alert("Completar los campos correctamente!");
-        
     }
 
 }

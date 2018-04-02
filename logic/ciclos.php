@@ -26,7 +26,7 @@ function seleccionarCiclo($conexion){
             $inicio = $tupla['anio_inicio'];
             $fin    = $tupla['anio_final'];
             $id     = $tupla['idCiclo_Escolar'];
-            echo "<option values='$id'>$inicio - $fin</option> ";
+            echo "<option value='$id'>$inicio - $fin</option> ";
         }
     }catch(PDOException $e){
         echo "Error: " . $e->getMessage();
