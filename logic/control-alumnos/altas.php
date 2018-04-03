@@ -36,7 +36,8 @@ if($existeAlumno){
         //Codigal para hacer todo el desmadre de la alta al alumno!!!
         altaAlumno($curp, $paterno, $materno,$nombre,$email,$genero,$fecha_nac, $conexion);
         asignarSalon($curp, $idCiclo, $idSalon, $conexion);
-        header('Location: ../../pages/control-alumnos/confirmar.php?op=exito');
+        
+        header("Location: ../../pages/control-alumnos/confirmar.php?op=exito&ciclo=$idCiclo&salon=$idSalon");
     }else{
         header('Location: ../../pages/control-alumnos/confirmar.php?op=noCabe');
 

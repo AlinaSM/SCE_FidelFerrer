@@ -45,10 +45,18 @@ require '../../logic/FechaHora.php';
         <form action="..\..\logic\usuarios\altas.php" name="frmRegistro" method="POST" class="regis-form">
             <label>Nombre de Usuario</label>
             <input type="text" name="txtUsuario" required>
+            <label>Nombre</label>
+            <input type="text" name="txtNombre" required>
+            <label>Paterno</label>
+            <input type="text" name="txtPaterno" required>
+            <label>Materno</label>
+            <input type="text" name="txtMaterno" required>
             <label>Contraseña</label>
             <input type="password" name="txtContrasena" required>
             <label>Comfirmar contraseña </label>
             <input type="password" name="txtContrasenaConfirma" required>
+            
+
 
             <input type="submit" value="Registrar" id="btnRegistrar" class="login-form__submit">
         </form>

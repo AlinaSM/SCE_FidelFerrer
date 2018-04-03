@@ -31,10 +31,10 @@ function cabeSecretarioNuevo($conexion){
     }
 }
 
-function registrarUsuario($usuario, $contrasena, $conexion){
+function registrarUsuario($usuario, $contrasena,$paterno, $materno,$nombre, $conexion){
     try{
         $puesto = "SECRETARIO";
-        $consulta = "INSERT INTO usuarios (puesto, usuario, contrasenia) VALUES ('$puesto','$usuario' , '$contrasena');";
+        $consulta = "INSERT INTO usuarios (puesto, usuario, contrasenia, paterno, materno, nombre) VALUES ('$puesto','$usuario' , '$contrasena', '$paterno','$materno','$nombre');";
         $conexion->query($consulta);
        
     }catch(PDOException $e){

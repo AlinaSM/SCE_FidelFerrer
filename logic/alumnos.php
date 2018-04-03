@@ -18,7 +18,7 @@ function existeAlumno($curp, $conexion){
 
 function altaAlumno($CURP, $paterno, $materno,$nombre,$email,$genero,$fecha_nac, $conexion){
     try{
-        $consulta = "INSERT INTO alumnos( curp, paterno, materno, nombre, email_tutor,genero, fecha_nac ) VALUES('$CURP','$paterno','$materno','$nombre','$email','$genero','$fecha_nac');";
+        $consulta = "INSERT INTO alumnos( CURP, paterno, materno, nombre, email_tutor, genero, fecha_nacimiento ) VALUES('$CURP','$paterno','$materno','$nombre','$email','$genero','$fecha_nac');";
         $resultado = $conexion->query($consulta);
      }catch(PDOException $e){
         $mensaje = "Error al generar la consulta a la base de datos: " . $e->getMessage();

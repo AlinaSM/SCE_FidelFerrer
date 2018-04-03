@@ -1,8 +1,8 @@
 <?php 
-
-function registrarBitacora($usuario, $fechaIngreso, $conexion){
+ 
+function registrarBitacora($usuario, $fechaIngreso, $tipo, $conexion){
     try{
-        $consulta = "INSERT INTO bitacora (usuario, fecha_ingreso) VALUES ('$usuario', '$fechaIngreso');";
+        $consulta = "INSERT INTO bitacora (usuario, tipo, fecha_ingreso) VALUES ('$usuario', '$tipo' ,'$fechaIngreso');";
         $resultado = $conexion->query($consulta);
      }catch(PDOException $e){
         $mensaje = "Error al generar la consulta a la base de datos: " . $e->getMessage();

@@ -13,8 +13,9 @@ function consultarUsuario($conexion, $usuario, $contrasena){
 
         if($tupla && $contrasena == $tupla['contrasenia']){
             $_SESSION['user_id'] = $tupla['id'];
+            $tipo = $tupla['puesto'];
 
-            registrarBitacora($usuario, $fecha_sist, $conexion);
+            registrarBitacora($usuario, $fecha_sist,$tipo, $conexion);
 
             switch($tupla['puesto']){
                 case 'DIRECTOR':

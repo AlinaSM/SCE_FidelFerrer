@@ -19,7 +19,7 @@ function obtenerIdSalon($grado, $grupo,$conexion){
 
 function salonLleno($IdCiclo,$IdSalon,$conexion){
     try{
-        $consulta = "SELECT COUNT(id) FROM boleta WHERE idCiclo = $IdCiclo AND idSalon = $IdSalon;";
+        $consulta = "SELECT COUNT(id) FROM boleta WHERE Ciclo_id = $IdCiclo AND Salon_id = $IdSalon;";
         $resultado = $conexion->query($consulta);
         $nTuplas = $resultado->fetchColumn();
 
@@ -36,10 +36,8 @@ function salonLleno($IdCiclo,$IdSalon,$conexion){
 
 function asignarSalon($CURP, $IdCiclo, $IdSalon, $conexion){
     try{
-       $consulta = "INSERT INTO boleta (CURP,idCiclo, idSalon) VALUES('$CURP', $IdCiclo, $IdSalon);";
-       echo "Hola";
+       $consulta = "INSERT INTO boleta (CURP,Ciclo_id, Salones_id, inscrito) VALUES('$CURP', $IdCiclo, $IdSalon, 'si');";
        $resultado = $conexion->query($consulta);
-       echo "Hola 2";
     }catch(PDOException $e){
         $mensaje = "Error al generar la consulta a la base de datos: " . $e->getMessage();
     }
