@@ -7,7 +7,7 @@ require '../../logic/conexion.php';
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -45,8 +45,8 @@ require '../../logic/conexion.php';
 
         <section>
 
-<form action="..\..\logic\salones\consultar-salon.php" name="formListaGrupos" method="GET">
-<div class="regis-grado">
+<form action="../../logic/evaluaciones/asignaturas.php" name="formListaGrupos" method="GET">
+<div class="regis-grado" >
 
     <h3 style="color:black;" >Elija el grado, grupo y bimestre: </h3>
 
@@ -65,20 +65,26 @@ require '../../logic/conexion.php';
         <option value="A">A</option>
     </select>
     
-    <select  name="comboBimestre" id="idBimestre" required >
-        <option value="" disabled selected>BIMESTRE</option>
-        <?php seleccionarCiclo($conexion); ?>
-    </select>
-
+    
+    
     <input type="submit" value="Consultar" id="conslutar" >
 
 </div>
 </form>
 
 </section>
-    <section>
+<section>
+
+
+    <?php 
+            require '../../logic/evaluaciones/asignaturas.php';
+            $op = $_GET['op'];
+            if($op == 'mostrar'){
+                tablaAsignaturas( $_GET['idSalon'], $conexion);
+            }
+    ?>
        
-    </section>
+   </section>
 
 
     <?php if (!empty($mensaje)):  ?>
