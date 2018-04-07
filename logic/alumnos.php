@@ -25,3 +25,7 @@ function altaAlumno($CURP, $paterno, $materno,$nombre,$email,$genero,$fecha_nac,
     }
 }
 
+function BuscarKardex($CURP, $Salon, $Ciclo){
+    $query= "SELECT id FROM boleta WHERE CURP = '$CURP' AND Ciclo_id = $Ciclo;";
+    return $Boleta;
+}

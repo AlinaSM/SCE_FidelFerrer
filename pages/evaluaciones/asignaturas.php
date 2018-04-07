@@ -22,7 +22,7 @@ require '../../logic/conexion.php';
         <div class = "head-inicio">
             <h1>Sistema de Control Escolar</h1>
             <h2>Fidel Ferrer</h2>
-            <img class="logo-escuela" src="..\..\assets\img\logo.jpg">
+            <img class="logo-escuela" src="../../assets/img/logo.jpg">
             <h5 style="text-align: left = 10px; margin: 0;" >PRIMARIA: <?php echo $Nombre; ?> | CCT: <?php echo $CCT; ?>   | CICLO ESCOLAR: <?= Ciclo() ?> | FECHA:  <?= FechaActual() ?>  </h5>
         </div>
     </header>
@@ -65,6 +65,14 @@ require '../../logic/conexion.php';
         <option value="A">A</option>
     </select>
     
+    <select  name="comboBimestre" id="idBimestre" required >
+        <option value="" disabled selected>BIMESTRE</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+    </select>
     
     
     <input type="submit" value="Consultar" id="conslutar" >
