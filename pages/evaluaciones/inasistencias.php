@@ -43,40 +43,57 @@ require '../../logic/conexion.php';
         </ul>
     </nav>
 
-        <section>
-
-            <form action="..\..\logic\salones\consultar-salon.php" name="formListaGrupos" method="GET">
-            <div class="regis-grado">
-
-                <h3 style="color:black;" >Elija el grado, grupo y bimestre: </h3>
-
-                <select  name="comboGrado" id="idGrado" required >
-                    <option value="" disabled selected>GRADO</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
-                </select>
-
-                <select  name="comboGrupo" id="idGrupo" required >
-                    <option value="" disabled selected>GRUPO</option>
-                    <option value="A">A</option>
-                </select>
-                
-                <select  name="comboBimestre" id="idBimestre" required >
-                    <option value="" disabled selected>BIMESTRE</option>
-                    <?php seleccionarCiclo($conexion); ?>
-                </select>
-
-                <input type="submit" value="Consultar" id="consultar" >
-
-            </div>
-            </form>
-
-        </section>
     <section>
+
+    <form action="../../logic/inasistencias/inasistencias.php" name="formListaGrupos" method="GET">
+        <div class="regis-grado">
+
+            <h3 style="color:black;" >Elija el grado, grupo y bimestre: </h3>
+
+            <select  name="comboGrado" id="idGrado" required >
+                <option value="" disabled selected>GRADO</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+            </select>
+
+            <select  name="comboGrupo" id="idGrupo" required >
+                <option value="" disabled selected>GRUPO</option>
+                <option value="A">A</option>
+            </select>
+                
+            <select  name="comboBimestre" id="idBimestre" required >
+                <option value="" disabled selected>BIMESTRE</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select>
+
+            <input type="submit" value="Consultar" id="consultar" >
+
+        </div>
+    </form>
+
+    </section>
+    <section>
+    <div class="titulo-evaluacion">
+            <h4>Escriba las calificaciones correspondientes para las asignaturas</h4>
+        </div>
+
+        <?php 
+                require '../../logic/inasistencias/inasistencias.php';
+                $op = $_GET['op'];
+                $idCiclo = obtenerIdCiclo(date("Y"), date("Y") + 1, $conexion);
+
+                if($op == 'mostrar'){
+                    tablaInasistencias( $_GET['idSalon'],$_GET['idBimestre'],$idCiclo, $conexion);
+                }
+        ?>
        
     </section>
 
