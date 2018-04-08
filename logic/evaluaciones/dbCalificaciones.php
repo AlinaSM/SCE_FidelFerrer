@@ -1,21 +1,45 @@
 <?php 
 
+function ExisteCalificacion($Asignatura, $KardexAlumno, $Bimestre, $conexion){
+    try{
+        $queryBuscar = "SELECT id AS id_Calificacion FROM calificaciones WHERE Asignaturas_id = $Asignatura AND  Boleta_id = $KardexAlumno AND Bimestre_id =$Bimestre ;";
+        $resultadoBuscar = $conexion->query($queryBuscar);
+        $resultId  = $resultadoBuscar->fetch();
+
+        if( $resultId  ){
+            return $idCalificacion = $resultId['id_Calificacion'];
+        }
+
+    }catch(PDOException $e){
+        $mensaje = "Error al generar la consulta a la base de datos: " . $e->getMessage();
+    }
+}
+
+
+function ObtenerCalificacion($id, $conexion){
+    try{
+        $Buscar = "SELECT calificacion FROM calificaciones WHERE id = $id; ";
+        $resultadoBuscar = $conexion->query($Buscar);
+        $resultado  = $resultadoBuscar->fetch();
+
+        if( $resultado  ){
+            return $calificacion = $resultado['calificacion'];
+        }
+        
+    }catch(PDOException $e){
+        $mensaje = "Error al generar la consulta a la base de datos: " . $e->getMessage();
+    }
+}
 
 
 function AltaCalificacion($KardexAlumno, $Bimestre, $Asignatura, $Calificacion, $conexion){
 
     try{
         //Saber si existe la califiacion de la asignatura deacuerdo con el kardex
-
-        $queryBuscar = "SELECT id AS id_Calificacion FROM calificaciones WHERE Asignaturas_id = $Asignatura AND  Boleta_id = $KardexAlumno AND Bimestre_id =$Bimestre ;";
-        $resultadoBuscar = $conexion->query($queryBuscar);
-        $resultId  = $resultadoBuscar->fetch();
-
-
+        $resultId  = ExisteCalificacion($Asignatura, $KardexAlumno, $Bimestre, $conexion);
 
         if( $resultId  ){
-            $idCalificacion = $resultId['id_Calificacion'];
-            echo "<br> $idCalificacion";
+            $idCalificacion = $resultId;
             $queryModificar = "UPDATE calificaciones SET Calificacion = $Calificacion WHERE id = $idCalificacion;";
             $conexion->query($queryModificar);
         }else{

@@ -1,10 +1,16 @@
 <?php
 
+require('dbCalificaciones.php');
+require('../../logic/alumnos.php');
+
 function tablaAsignaturas( $idSalon,$Bimestre,$Ciclo, $conexion){
     $cont = 1;
     $idCiclo = 1;
     $Asignatura = array();
     $nAsig = 0;
+
+    
+
     echo "<table class='tablaAlumnos' >";
     echo "<tr class='encabezadoTabla'><th>No.</th><th>CURP</th><th>Paterno</th><th>Materno</th><th>Nombre</th> ";
     
@@ -36,13 +42,23 @@ function tablaAsignaturas( $idSalon,$Bimestre,$Ciclo, $conexion){
             echo "<input type='hidden' name='idCiclo' value='".$Ciclo."'>";
 
             echo "<td>".$cont."</td><td>".$tupla['curp']."</td><td>".$tupla['paterno']."</td><td>".$tupla['materno']."</td><td>".$tupla['nombre']."</td>";
-                
+           
+            $Kardex = ObtenerKardex($tupla['curp'], $Ciclo, $idSalon, $conexion);  
+
                 for($i = 0; $i < count($Asignatura); $i++){//
-                  
+                    $idAsignatura = $Asignatura[$i][0];
+                    $mostrarCalificacion = null;
+
+                    $id_Calificacion = ExisteCalificacion($idAsignatura, $Kardex, $Bimestre, $conexion);
+                    
+                    if($id_Calificacion){
+                        $mostrarCalificacion = ObtenerCalificacion($id_Calificacion, $conexion);  
+                    }
+                    //ObtenerCalificacion($id, $conexion)
                     // el input tiene que aparecer con un valor en caso de que el alumno 
                     // tenga registrada una calificacion, si no es asi se mostrara el 
                     // input en blanco.
-                    echo '<td><input id="idCalificacion" name = "txtCal_'.$Asignatura[$i][0].'" type = "number" value = "" size="14" min="5" max="10" required step=".1" > </td>';
+                    echo '<td><input id="idCalificacion" name = "txtCal_'.$idAsignatura.'" type = "number" value = "'.$mostrarCalificacion.'" size="14" min="5" max="10" required step=".1" > </td>';
                 }
                 echo "<td> <input type='submit' name='btnGuardar' value='Guardar'> </td>";
                 echo "<td> <input type='submit' name='btnBorrar'  value='Borrar'>  </td>";
