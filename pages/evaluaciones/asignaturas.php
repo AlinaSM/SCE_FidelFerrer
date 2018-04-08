@@ -7,7 +7,7 @@ require '../../logic/conexion.php';
 ?>
 
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es-MX">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -26,13 +26,10 @@ require '../../logic/conexion.php';
             <h5 style="text-align: left = 10px; margin: 0;" >PRIMARIA: <?php echo $Nombre; ?> | CCT: <?php echo $CCT; ?>   | CICLO ESCOLAR: <?= Ciclo() ?> | FECHA:  <?= FechaActual() ?>  </h5>
         </div>
     </header>
-
     <nav>
         <ul>
             <li><a href="inicio.php">Inicio</a></li>
-            
-
-            <li><a href="asignaturas.php">Asignaturas</a></li>
+            <li><a href="asignaturas.php" class="activo">Asignaturas</a></li>
             <li><a href="compresion-lectora.php">Comprensión Lectora</a></li>
             <li><a href="hfa.php">HFA</a></li>
             <li><a href="inasistencias.php">Inasistencias</a></li>
@@ -42,55 +39,55 @@ require '../../logic/conexion.php';
             <li style="float:right"><a href="..\..\inicio-direc.php">Terminar</a></li>
         </ul>
     </nav>
+    <section>
 
-        <section>
+        <form action="../../logic/evaluaciones/asignaturas.php" name="formListaGrupos" method="GET">
+        <div class="regis-grado" >
 
-<form action="../../logic/evaluaciones/asignaturas.php" name="formListaGrupos" method="GET">
-<div class="regis-grado" >
+            <h3 style="color:black;" >Elija el grado, grupo y bimestre: </h3>
 
-    <h3 style="color:black;" >Elija el grado, grupo y bimestre: </h3>
+            <select  name="comboGrado" id="idGrado" required >
+                <option value="" disabled selected>GRADO</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+            </select>
 
-    <select  name="comboGrado" id="idGrado" required >
-        <option value="" disabled selected>GRADO</option>
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-        <option value="6">6</option>
-    </select>
+            <select  name="comboGrupo" id="idGrupo" required >
+                <option value="" disabled selected>GRUPO</option>
+                <option value="A">A</option>
+            </select>
+            
+            <select  name="comboBimestre" id="idBimestre" required >
+                <option value="" disabled selected>BIMESTRE</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select>
 
-    <select  name="comboGrupo" id="idGrupo" required >
-        <option value="" disabled selected>GRUPO</option>
-        <option value="A">A</option>
-    </select>
-    
-    <select  name="comboBimestre" id="idBimestre" required >
-        <option value="" disabled selected>BIMESTRE</option>
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-    </select>
-    
-    
-    <input type="submit" value="Consultar" id="conslutar" >
+            <input type="submit" value="Consultar" id="consultar" >
 
-</div>
-</form>
+        </div>
+        </form>
+    </section>
+    <section>
+        <div class="titulo-evaluacion">
+            <h4>Escriba las calificaciones correspondientes para las asignaturas</h4>
+        </div>
 
-</section>
-<section>
-
-
-    <?php 
-            require '../../logic/evaluaciones/asignaturas.php';
-            $op = $_GET['op'];
-            if($op == 'mostrar'){
-                tablaAsignaturas( $_GET['idSalon'], $conexion);
-            }
-    ?>
+        <?php 
+                require '../../logic/evaluaciones/asignaturas.php';
+                $op = $_GET['op'];
+                $idCiclo = obtenerIdCiclo(date("Y"), date("Y") + 1, $conexion);
+                if($op == 'mostrar'){
+                    tablaAsignaturas( $_GET['idSalon'],$_GET['idBimestre'],$idCiclo, $conexion);
+                }
+        ?>
        
    </section>
 

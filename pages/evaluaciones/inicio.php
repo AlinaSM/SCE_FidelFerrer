@@ -29,7 +29,7 @@ require '../../logic/conexion.php';
 
     <nav>
         <ul>
-            <li><a href="inicio.php">Inicio</a></li>
+            <li><a href="inicio.php" class="activo">Inicio</a></li>
             
 
             <li><a href="asignaturas.php">Asignaturas</a></li>
@@ -45,38 +45,9 @@ require '../../logic/conexion.php';
 
     <section>
 
-        <form action="..\..\logic\salones\consultar-salon.php" name="formListaGrupos" method="GET">
-        <div class="regis-grado">
-
-            <h3 style="color:black;" >Elija el grado, grupo y bimestre: </h3>
-
-            <select  name="comboGrado" id="idGrado" required >
-                <option value="" disabled selected>GRADO</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-                <option value="6">6</option>
-            </select>
-
-            <select  name="comboGrupo" id="idGrupo" required >
-                <option value="" disabled selected>GRUPO</option>
-                <option value="A">A</option>
-            </select>
-            
-            <select  name="comboBimestre" id="idBimestre" required >
-                <option value="" disabled selected>BIMESTRE</option>
-                <?php seleccionarCiclo($conexion); ?>
-            </select>
-
-            <input type="submit" value="Consultar" id="conslutar" >
-
-            
-
-        </div>
-        
-        </form>
+       <div class="info-bimestres">
+       
+       </div>
 
     </section>
 

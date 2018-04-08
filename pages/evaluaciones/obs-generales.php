@@ -37,7 +37,7 @@ require '../../logic/conexion.php';
             <li><a href="hfa.php">HFA</a></li>
             <li><a href="inasistencias.php">Inasistencias</a></li>
             <li><a href="obs-especificas.php">Obs. Especificas</a></li>
-            <li><a href="obs-generales.php">Obs. Generales</a></li>
+            <li><a href="obs-generales.php" class="activo">Obs. Generales</a></li>
   
             <li style="float:right"><a href="..\..\inicio-direc.php">Terminar</a></li>
         </ul>
@@ -48,7 +48,7 @@ require '../../logic/conexion.php';
         <form action="..\..\logic\salones\consultar-salon.php" name="formListaGrupos" method="GET">
         <div class="regis-grado">
 
-        <h3 style="color:black;" >Elija grado y grupo: </h3>
+        <h3 style="color:black;" >Paso 1: Seleccione el grado, grupo y bimestre, despues haga clic en el boton de Consultar </h3>
 
         
 
@@ -67,7 +67,7 @@ require '../../logic/conexion.php';
             <option value="A">A</option>
         </select>
 
-        <input type="submit" value="Consultar" id="conslutar" >
+        <input type="submit" value="Consultar" id="consultar" >
 
         </div>
         

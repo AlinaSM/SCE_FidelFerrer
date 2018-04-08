@@ -36,7 +36,7 @@ require '../../logic/conexion.php';
             <li><a href="compresion-lectora.php">Comprensión Lectora</a></li>
             <li><a href="hfa.php">HFA</a></li>
             <li><a href="inasistencias.php">Inasistencias</a></li>
-            <li><a href="obs-especificas.php">Obs. Especificas</a></li>
+            <li><a href="obs-especificas.php" class="activo">Obs. Especificas</a></li>
             <li><a href="obs-generales.php">Obs. Generales</a></li>
   
             <li style="float:right"><a href="..\..\inicio-direc.php">Terminar</a></li>
@@ -70,7 +70,7 @@ require '../../logic/conexion.php';
                 <?php seleccionarCiclo($conexion); ?>
             </select>
 
-            <input type="submit" value="Consultar" id="conslutar" >
+            <input type="submit" value="Consultar" id="consultar" >
 
         </div>
         </form>

@@ -1,6 +1,6 @@
 <?php
 
-function tablaAsignaturas( $idSalon, $conexion){
+function tablaAsignaturas( $idSalon,$Bimestre,$Ciclo, $conexion){
     $cont = 1;
     $idCiclo = 1;
     $Asignatura = array();
@@ -29,7 +29,11 @@ function tablaAsignaturas( $idSalon, $conexion){
         while($tupla = $resultado->fetch(PDO::FETCH_ASSOC)){
           
             echo "<tr> <form action='../../logic/evaluaciones/subirCalificacion.php' name='form".$cont."' method='GET'>";
+            
             echo "<input type='hidden' name='CURP' value='".$tupla['curp']."'>";
+            echo "<input type='hidden' name='idSalon' value='".$idSalon."'>";
+            echo "<input type='hidden' name='idBimestre' value='".$Bimestre."'>";
+            echo "<input type='hidden' name='idCiclo' value='".$Ciclo."'>";
 
             echo "<td>".$cont."</td><td>".$tupla['curp']."</td><td>".$tupla['paterno']."</td><td>".$tupla['materno']."</td><td>".$tupla['nombre']."</td>";
                 
@@ -38,7 +42,7 @@ function tablaAsignaturas( $idSalon, $conexion){
                     // el input tiene que aparecer con un valor en caso de que el alumno 
                     // tenga registrada una calificacion, si no es asi se mostrara el 
                     // input en blanco.
-                    echo '<td><input id="idCalificacion" name = "txtCalificacion'.$i.'" type = "number" value = "" size="14" min="5" max="10" required> </td>';
+                    echo '<td><input id="idCalificacion" name = "txtCal_'.$Asignatura[$i][0].'" type = "number" value = "" size="14" min="5" max="10" required step=".1" > </td>';
                 }
                 echo "<td> <input type='submit' name='btnGuardar' value='Guardar'> </td>";
                 echo "<td> <input type='submit' name='btnBorrar'  value='Borrar'>  </td>";
