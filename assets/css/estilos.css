@@ -42,7 +42,7 @@ body{
 
 
 .login-form__submit:hover{
-    background-color: rgb(218, 179, 6); 
+    background-color: #dab306; 
 
 }
 
@@ -137,6 +137,36 @@ section>h3{
     background-color: #ECC200;
     color: #002E62;
 }
+.encabezado-bit{
+    display: block;
+    height: 100px;
+    width: 100%;
+    padding: 20px;
+}
+
+.encabezado-bit > button {
+    padding: 10px;
+    font-size: 20px;
+    color: #002E62;
+    background-color: #ECC200;
+    border: none;
+    margin:0;
+    display: block;
+}
+
+.encabezado-bit > button:hover {
+    color: #002E62;
+    background-color: #dab306;
+ 
+}
+
+.encabezado-bit > h4{
+    text-align: center;
+    font-size: 25px;
+    margin: 0 auto;
+    display: block;
+
+}
 
 
 
@@ -208,7 +238,7 @@ nav li:hover > ul>li{
 */
 
 .tablaAlumnos{
-    margin:3% auto;
+    margin:5px auto;
     width:60%;
     font-size:14px;
 }
@@ -217,8 +247,6 @@ nav li:hover > ul>li{
     border: 1px solid #ddd;
     padding:4px;
 }
-
-
 
 .tablaAlumnos tr:hover{
     background-color: #ddd;

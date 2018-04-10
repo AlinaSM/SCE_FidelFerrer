@@ -60,4 +60,24 @@ function AltaCalificacion($KardexAlumno, $Bimestre, $Asignatura, $Calificacion, 
     }
 }
 
+
+
+function BorrarCalificaciones($Kardex, $Bimestre, $conexion){
+
+    try{
+        $buscar = "SELECT id FROM calificaciones WHERE calificaciones.Boleta_id = $Kardex AND calificaciones.Bimestre_id = $Bimestre;";
+        $resultadoBusqueda = $conexion->query($buscar);
+
+        while ($tupla = $resultadoBusqueda->fetch(PDO::FETCH_ASSOC)) {
+            $queryEliminar = "DELETE FROM calificaciones WHERE id =".$tupla['id'].";";
+            $conexion->query($queryEliminar);
+        }
+    }catch(PDOException $e){
+        echo "Error: ".$e->getMessage();
+    }
+
+
+
+
+}
 ?>

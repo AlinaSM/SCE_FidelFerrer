@@ -29,6 +29,4 @@ function consultarBitacora($conexion){
     echo "</table>";
 }
 
-
-
 ?>

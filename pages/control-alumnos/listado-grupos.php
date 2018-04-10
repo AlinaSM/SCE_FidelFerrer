@@ -4,17 +4,21 @@ require '../../logic/FechaHora.php';
 require '../../logic/ciclos.php';
 require '../../logic/conexion.php';
 
+require '../../logic/salones/consultar-salon.php';
+$op = $_GET['op'];
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="..\..\assets\css\estilos.css">
     <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
     <script src="..\..\assets\js\script.js"></script>
+    <script src="..\..\assets\js\listasPDF.js"></script>
     <title>Lista de Grupos</title>
 </head>
 <body>
@@ -79,10 +83,18 @@ require '../../logic/conexion.php';
 
     </section>
     <section>
+        <?php if ($op=='mostrar'):  ?>
+            <div class="encabezado-bit">
+                <h4>Lista de Alumnos</h4>
+                <button type="button" id='btnListaGruposPDF' onclick = "ListaGrupos()">Generar PDF </button>
+                
+            </div>
+        <?php endif ?>
+    
         <?php
-        require '../../logic/salones/consultar-salon.php';
-            $op = $_GET['op'];
+            
             if($op=='mostrar'){
+                    
                 CrearTabla($_GET['idCiclo'], $_GET['idSalon'], $conexion);
             }
         ?>

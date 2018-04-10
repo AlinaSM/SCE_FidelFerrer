@@ -17,6 +17,17 @@ function NumeroInasistencias($id, $conexion){
     }
 }
 
+function borrarInasistencia($Kardex, $Bimestre, $conexion){
+    try{    
+        $queryEliminar = "DELETE FROM inasistencias WHERE Boleta_id = $Kardex AND Bimestre_id = $Bimestre;";
+        $conexion->query($queryEliminar);
+    }catch(PDOException $e){
+        echo "Error: ".$e->getMessage();
+    }
+
+}
+
+
 
 function tieneInasistencias($Kardex, $Bimestre, $conexion){
     try{
