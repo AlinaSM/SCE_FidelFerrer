@@ -1,6 +1,9 @@
 <?php
-
+require('../../logic/conexion.php');
 require('cargarDatos.php');
+$Bimestre = 1;
+$Kardex = 2;
+
 
 $NombreAlum  = "Alina";
 $PaternoAlum = "Salinas";
@@ -19,10 +22,9 @@ $Region = "Acapulco";
 
 
 $tamanioBoleta = 215; //NO MODIFICAR, DEJAR EN 215
-$nuevoNombreDelPDF="Primaria1";
 
-$anchoRecuadroCal = 13;
-$altoRecuadroCal  = 11;
+$anchoRecuadroCal = 12;
+$altoRecuadroCal  = 10.1;
 $posX = 44;
 $posY = 83;
 
@@ -40,66 +42,25 @@ datosBoletaAlumno($pdf, $PaternoAlum, $MaternoAlum, $NombreAlum, $CURP);
 datosGeneralesEscuela($pdf,$NombreEsc,$Grupo,$Turno, $CCT,$Zona);
 datosUbicacionEscuela($pdf, $Localidad, $Municipio, $Region);
 
-//Primera materia puntos origen 44,83  tamaño 13w 11h
-$pdf->SetXY($posX, $posY);
-$pdf->Cell($anchoRecuadroCal, $altoRecuadroCal, '10.0', 1, 0,'C');
+$query = "SELECT asignaturas.nombre AS Asignatura , calificacion FROM calificaciones, asignaturas, boleta WHERE Boleta_id = 5 AND boleta.Ciclo_id = 1 AND calificaciones.Asignaturas_id = asignaturas.id group by(calificaciones.id);";
+$resultado = $conexion->query($query);
+$controlador = 1;
 
+while ($tupla = $resultado->fetch(PDO::FETCH_ASSOC)) {
+    $pdf->SetXY($posX, $posY);
+    $pdf->Cell($anchoRecuadroCal, $altoRecuadroCal,$tupla['calificacion'], 0, 0,'C'); 
+    $posY = $posY + $altoRecuadroCal;
+    $controlador = $controlador + 1;
 
+    if ($controlador % 7 == 0) {
+        $controlador = 1;
+        $posX = $posX + $anchoRecuadroCal;
+        $posY = 83;
 
-//Segunda materia
-$pdf->SetXY(45, 93.5);
-$pdf->Cell(10, 10, '10.0', 1, 0,'C');
-
-$pdf->SetXY(56.5, 93.5);
-$pdf->Cell(10, 10, '10.0', 1, 0,'C');
-
-$pdf->SetXY(68.5, 93.5);
-$pdf->Cell(10, 10, '10.0', 1, 0,'C');
-
-$pdf->SetXY(80.5, 93.5);
-$pdf->Cell(10, 10, '10.0', 1, 0,'C');
-
-$pdf->SetXY(92.5, 93.5);
-$pdf->Cell(10, 10, '10.0', 1, 0,'C');
-
-
-//Tercera materia
-$pdf->SetXY(45, 103.5);
-$pdf->Cell(10, 10, '10.0', 1, 0,'C');
-
-$pdf->SetXY(56.5, 103.5);
-$pdf->Cell(10, 10, '10.0', 1, 0,'C');
-
-$pdf->SetXY(68.5, 103.5);
-$pdf->Cell(10, 10, '10.0', 1, 0,'C');
-
-$pdf->SetXY(80.5, 103.5);
-$pdf->Cell(10, 10, '10.0', 1, 0,'C');
-
-$pdf->SetXY(92.5, 103.5);
-$pdf->Cell(10, 10, '10.0', 1, 0,'C');
-
-
-//Tercera materia
-$pdf->SetXY(45, 103.5);
-$pdf->Cell(10, 10, '10.0', 1, 0,'C');
-
-$pdf->SetXY(56.5, 103.5);
-$pdf->Cell(10, 10, '10.0', 1, 0,'C');
-
-$pdf->SetXY(68.5, 103.5);
-$pdf->Cell(10, 10, '10.0', 1, 0,'C');
-
-$pdf->SetXY(80.5, 103.5);
-$pdf->Cell(10, 10, '10.0', 1, 0,'C');
-
-$pdf->SetXY(92.5, 103.5);
-$pdf->Cell(10, 10, '10.0', 1, 0,'C');
-
+    }
+}
 
 $pdf->useImportedPage($pageId, 0, 0, $tamanioBoleta);
-
-
 
 $pageId = $pdf->importPage(2);
 $pdf->AddPage('P','Letter',0);
