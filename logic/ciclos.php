@@ -34,4 +34,21 @@ function seleccionarCiclo($conexion){
 
 }
 
+
+function obtenerCadenaCiclo($idCiclo, $conexion){
+    try{
+        $consulta = "SELECT anio_inicio AS inicio, anio_final AS final  FROM ciclo_escolar wHERE id = $idCiclo;";
+        $resultado = $conexion->query($consulta);
+        $tupla = $resultado->fetch();
+
+        if( $tupla ){
+            $Inicio = $tupla['inicio'];
+            $Final  = $tupla['final'];
+            return "$Inicio - $Final";
+        }
+    }catch(PDOException $e){
+        echo "Error: " . $e->getMessage();
+    }
+}
+
 ?>

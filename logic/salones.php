@@ -45,5 +45,41 @@ function asignarSalon($CURP, $IdCiclo, $IdSalon, $conexion){
 
 }
 
+function obtenerGrado($IdSalon, $conexion){
+    try{
+        $consulta = "SELECT Grados_id FROM salones WHERE id = $IdSalon;";
+        $resultado = $conexion->query($consulta);
+        $tupla = $resultado->fetch();
+
+        if( $tupla ){
+            $Grado = $tupla['Grados_id'];
+            return $Grado;
+        }else{
+            return false;
+        }
+    }catch(PDOException $e){
+        echo "Error: " . $e->getMessage();
+    }
+
+}
+
+
+function obtenerGrupo($IdSalon, $conexion){
+    try{
+        $consulta = "SELECT grupo FROM salones WHERE id = $IdSalon;";
+        $resultado = $conexion->query($consulta);
+        $tupla = $resultado->fetch();
+
+        if( $tupla ){
+            $grupo = $tupla['grupo'];
+            return $grupo;
+        }else{
+            return false;
+        }
+    }catch(PDOException $e){
+        echo "Error: " . $e->getMessage();
+    }
+
+}
 
 ?>

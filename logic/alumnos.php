@@ -40,4 +40,25 @@ function ObtenerKardex($CURP, $Ciclo, $Salon, $conexion){
     }catch(PDOException $e){
         $mensaje = "Error al generar la consulta a la base de datos: " . $e->getMessage();
     }
+
+
+    
+}
+
+
+
+function ObtenerPromedio($conexion, $Kardex, $Bimestre){
+    try{
+        $query = "SELECT avg(calificaciones.Calificacion) as Promedio FROM calificaciones WHERE calificaciones.Boleta_id = $Kardex AND calificaciones.Bimestre_id = $Bimestre;";
+        $resultado = $conexion->query($query);
+        $tupla = $resultado->fetch(PDO::FETCH_ASSOC);
+
+        if($tupla){
+            return $tupla['Promedio'];
+        }else{
+            return false;
+        }
+    }catch(PDOException $e){
+        $mensaje = "Error al generar la consulta a la base de datos: " . $e->getMessage();
+    }
 }
