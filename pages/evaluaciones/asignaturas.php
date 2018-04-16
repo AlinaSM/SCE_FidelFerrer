@@ -3,7 +3,8 @@ require '../../logic/info-escuela.php';
 require '../../logic/FechaHora.php';
 require '../../logic/ciclos.php';
 require '../../logic/conexion.php';
-
+$op = $_GET['op'];
+$Bimestre = $_GET['idBimestre'];
 ?>
 
 <!DOCTYPE html>
@@ -15,6 +16,7 @@ require '../../logic/conexion.php';
     <link rel="stylesheet" href="..\..\assets\css\estilos.css">
     <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
     <script src="..\..\assets\js\script.js"></script>
+    <script src="..\..\assets\js\listasPDF.js"></script>
     <title>Asignaturas</title>
 </head>
 <body>
@@ -79,6 +81,14 @@ require '../../logic/conexion.php';
         <div class="titulo-evaluacion">
             <h4>Escriba las calificaciones correspondientes para las asignaturas</h4>
         </div>
+
+         <?php if ($op=='mostrar'):  ?>
+            <div class="encabezado-bit">
+                <h4>Calificaciones de Bimestre <?php echo $Bimestre;?></h4>
+                <button type="button" id='btnListaGruposPDF' onclick = "CamposCompletos()">Generar PDF </button>
+                
+            </div>
+        <?php endif ?>
 
         <?php 
                 require '../../logic/evaluaciones/asignaturas.php';

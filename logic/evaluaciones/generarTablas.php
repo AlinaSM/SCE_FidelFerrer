@@ -52,7 +52,7 @@ function tablaAsignaturas( $idSalon,$Bimestre,$Ciclo, $conexion){
                     if($id_Calificacion){
                         $mostrarCalificacion = ObtenerCalificacion($id_Calificacion, $conexion);  
                     }
-                    echo '<td><input id="idCalificacion" name = "txtCal_'.$idAsignatura.'" type = "number" value = "'.$mostrarCalificacion.'" size="14" min="5" max="10" required step=".1" > </td>';
+                    echo '<td><input class="clCalificacion" name = "txtCal_'.$idAsignatura.'" type = "number" value = "'.$mostrarCalificacion.'" size="14" min="5" max="10" required step=".1" > </td>';
                 }
                 echo "<td> <input type='submit' name='btnGuardar' value='Guardar'> </td>";
                 echo "<td> <input type='submit' name='btnBorrar'  value='Borrar' > </td>";

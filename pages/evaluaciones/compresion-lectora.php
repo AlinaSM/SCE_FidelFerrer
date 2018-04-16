@@ -2,8 +2,9 @@
 require '../../logic/info-escuela.php';
 require '../../logic/FechaHora.php';
 require '../../logic/ciclos.php';
+require '../../logic/periodos.php';
 require '../../logic/conexion.php';
-
+require '../../logic/compresion-lectora/compresion-lectora.php';
 ?>
 
 <!DOCTYPE html>
@@ -44,13 +45,11 @@ require '../../logic/conexion.php';
     </nav>
 
     <section>
-
-        <form action="..\..\logic\salones\consultar-salon.php" name="formListaGrupos" method="GET">
+    
+        <form action="../../logic/compresion-lectora/compresion-lectora.php" name="formListaGrupos" method="GET">
         <div class="regis-grado">
 
         <h3 style="color:black;" >Elija grado, grupo y periodo: </h3>
-
-        
 
 
         <select  name="comboGrado" id="idGrado" required >
@@ -70,7 +69,7 @@ require '../../logic/conexion.php';
 
         <select  name="comboPeriodo" id="idPeriodo" required >
             <option value="" disabled selected>PERIODO</option>
-            <?php seleccionarCiclo($conexion); ?>
+            <?php seleccionarPeriodo($conexion); ?>
         </select>
 
         <input type="submit" value="Consultar" id="consultar" >
@@ -81,6 +80,27 @@ require '../../logic/conexion.php';
 
     </section>
     <section>
+
+        <div class="titulo-evaluacion">
+            <h4>Escriba las calificaciones correspondientes para las asignaturas</h4>
+        </div>
+
+         <?php if ($op=='mostrar'):  ?>
+            <div class="encabezado-bit">
+                <h4>Calificaciones de Bimestre <?php echo $Bimestre;?></h4>
+                <button type="button" id='btnListaGruposPDF' onclick = "CamposCompletos()">Generar PDF </button>
+                
+            </div>
+        <?php endif ?>
+
+        <?php 
+               
+                $op = $_GET['op'];
+                $idCiclo = obtenerIdCiclo(date("Y"), date("Y") + 1, $conexion);
+                if($op == 'mostrar'){
+                    tablaLectora( $_GET['idSalon'],$_GET['idPeriodo'],$idCiclo, $conexion);
+                }
+        ?>
        
     </section>
 
