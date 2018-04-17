@@ -8,11 +8,12 @@ error_reporting(E_ERROR | E_WARNING);
 $idBimestre = $_GET['comboBimestre'];
 $Grado      = $_GET['comboGrado'];
 $Grupo      = $_GET['comboGrupo'];
+$Ciclo      = $_GET['idCiclo'];
 
 
 
 if( $Grado && $Grupo){
     $idSalon = obtenerIdSalon($Grado, $Grupo, $conexion);
-    header("Location: ../../pages/evaluaciones/inasistencias.php?op=mostrar&idSalon=$idSalon&idBimestre=$idBimestre");
+    header("Location: ../../pages/evaluaciones/inasistencias.php?op=mostrar&idSalon=$idSalon&idBimestre=$idBimestre&idCiclo=$Ciclo");
 }
 ?>

@@ -16,7 +16,7 @@ function tablaInasistencias( $idSalon,$Bimestre,$Ciclo, $conexion){
         $resultado = $conexion->query($consulta); 
         
         while($tupla = $resultado->fetch(PDO::FETCH_ASSOC)){
-          //../../logic/evaluaciones/subirCalificacion.php
+  
             echo "<tr> <form action='../../logic/inasistencias/alta-inasistencia.php' name='form".$cont."' method='GET'>";
             
             echo "<input type='hidden' name='CURP' value='".$tupla['curp']."'>";

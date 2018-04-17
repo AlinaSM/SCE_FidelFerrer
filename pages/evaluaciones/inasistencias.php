@@ -3,7 +3,12 @@ require '../../logic/info-escuela.php';
 require '../../logic/FechaHora.php';
 require '../../logic/ciclos.php';
 require '../../logic/conexion.php';
+require '../../logic/inasistencias/inasistencias.php';
 
+error_reporting(E_ERROR | E_WARNING);
+$op = $_GET['op'];
+$idCiclo = obtenerIdCiclo(date("Y"), date("Y") + 1, $conexion);
+$Bimestre = $_GET['idBimestre'];
 ?>
 
 <!DOCTYPE html>
@@ -15,6 +20,7 @@ require '../../logic/conexion.php';
     <link rel="stylesheet" href="..\..\assets\css\estilos.css">
     <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
     <script src="..\..\assets\js\script.js"></script>
+    <script src="..\..\assets\js\listasPDF.js"></script>
     <title>Inasistencias</title>
 </head>
 <body>
@@ -30,8 +36,6 @@ require '../../logic/conexion.php';
     <nav>
         <ul>
             <li><a href="inicio.php">Inicio</a></li>
-            
-
             <li><a href="asignaturas.php">Asignaturas</a></li>
             <li><a href="compresion-lectora.php">Comprensión Lectora</a></li>
             <li><a href="hfa.php">HFA</a></li>
@@ -44,7 +48,6 @@ require '../../logic/conexion.php';
     </nav>
 
     <section>
-
     <form action="../../logic/inasistencias/inasistencias.php" name="formListaGrupos" method="GET">
         <div class="regis-grado">
 
@@ -73,7 +76,7 @@ require '../../logic/conexion.php';
                 <option value="4">4</option>
                 <option value="5">5</option>
             </select>
-
+            <?php echo "<input type='hidden' name='idCiclo' value='$idCiclo'>"; ?>
             <input type="submit" value="Consultar" id="consultar" >
 
         </div>
@@ -85,10 +88,16 @@ require '../../logic/conexion.php';
             <h4>Escriba las calificaciones correspondientes para las asignaturas</h4>
         </div>
 
+         <?php if ($op=='mostrar'):  ?>
+            <div class="encabezado-bit">
+                <h4>Calificaciones de Bimestre <?php echo $Bimestre;?></h4>
+                <button type="button" id='btnListaGruposPDF' onclick = "CamposCompletosInasistencias()()">Generar PDF </button>
+                
+            </div>
+        <?php endif ?>
+
         <?php 
-                require '../../logic/inasistencias/inasistencias.php';
-                $op = $_GET['op'];
-                $idCiclo = obtenerIdCiclo(date("Y"), date("Y") + 1, $conexion);
+                
 
                 if($op == 'mostrar'){
                     tablaInasistencias( $_GET['idSalon'],$_GET['idBimestre'],$idCiclo, $conexion);

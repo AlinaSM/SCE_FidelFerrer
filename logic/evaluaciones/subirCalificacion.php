@@ -76,7 +76,7 @@ else if(isset($_GET['btnBorrar'])){
 } 
 
 
-header("Location: ../../pages/evaluaciones/asignaturas.php?op=mostrar&idSalon=$idSalon&idBimestre=$Bimestre");
+header("Location: ../../pages/evaluaciones/asignaturas.php?op=mostrar&idSalon=$idSalon&idBimestre=$Bimestre&idCiclo=$idCiclo");
 
 
 ?>

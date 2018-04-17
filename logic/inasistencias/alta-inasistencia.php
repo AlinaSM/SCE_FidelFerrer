@@ -18,7 +18,7 @@ if(isset($_GET['btnGuardar'])){
 }else if(isset($_GET['btnBorrar'])){
     borrarInasistencia($Kardex, $Bimestre, $conexion);
 }
-header("Location: ../../pages/evaluaciones/inasistencias.php?op=mostrar&idSalon=$idSalon&idBimestre=$Bimestre");
+header("Location: ../../pages/evaluaciones/inasistencias.php?op=mostrar&idSalon=$idSalon&idBimestre=$Bimestre&idCiclo=$idCiclo");
 
 
 

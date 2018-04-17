@@ -1,6 +1,6 @@
 <?php
 
-
+require('../../logic/compresion-lectora/funciones.php');
 require('../../logic/alumnos.php');
 
 function tablaLectora( $idSalon,$Periodo,$Ciclo, $conexion){
@@ -8,6 +8,7 @@ function tablaLectora( $idSalon,$Periodo,$Ciclo, $conexion){
     $idCiclo = 1;
     $Asignatura = array();
     $nAsig = 0;
+    $MensajeSelect = "OPCION";
 
 
     echo "<table class='tablaAlumnos' >";
@@ -27,7 +28,7 @@ function tablaLectora( $idSalon,$Periodo,$Ciclo, $conexion){
         $resultadoAlumnos = $conexion->query($queryAlumnos); 
         
         while($tupla = $resultadoAlumnos->fetch(PDO::FETCH_ASSOC)){
-          
+            //compresion-lectora.php?op=mostrar&idSalon=1&idPeriodo=1
             echo "<tr> <form action='../../logic/compresion-lectora/subirComprension-lectora.php' name='form".$cont."' method='GET'>";
             
             echo "<input type='hidden' name='CURP' value='".$tupla['curp']."'>";
@@ -42,14 +43,19 @@ function tablaLectora( $idSalon,$Periodo,$Ciclo, $conexion){
 
             $queryOpc = "SELECT id, opcion FROM opciones_cl order by(id);";
             
-
-           
             for ($i=1; $i < 4 ; $i++) { 
                 $resultadoOpc = $conexion->query($queryOpc);
+                $Respuesta = NombreOpcion($conexion, $Kardex, $i, $Periodo);
+
+                if($Respuesta){
+                    $MensajeSelect = $Respuesta;
+                }else{
+                    $MensajeSelect = "OPCION";    
+                }
                 echo "<td>";
                 echo "<select  name='comboResp$i' id='idPes$i' required >";
-                echo "<option value='' disabled selected>OPCION</option>";
-
+                echo "<option value='' disabled selected>".$MensajeSelect."</option>";
+               
                 while ($tupla = $resultadoOpc->fetch(PDO::FETCH_ASSOC)) {
                     echo "<option value=".$tupla['id'].">".$tupla['opcion']."</option>";
                 }  

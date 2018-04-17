@@ -5,6 +5,12 @@ require '../../logic/ciclos.php';
 require '../../logic/periodos.php';
 require '../../logic/conexion.php';
 require '../../logic/compresion-lectora/compresion-lectora.php';
+
+error_reporting(E_ERROR | E_WARNING);
+$idCiclo = obtenerIdCiclo(date("Y"), date("Y") + 1, $conexion);
+
+$op = $_GET['op'];
+$Periodo = $_GET['idPeriodo'];
 ?>
 
 <!DOCTYPE html>
@@ -16,6 +22,7 @@ require '../../logic/compresion-lectora/compresion-lectora.php';
     <link rel="stylesheet" href="..\..\assets\css\estilos.css">
     <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
     <script src="..\..\assets\js\script.js"></script>
+    <script src="..\..\assets\js\listasPDF.js"></script>
     <title>Comprension Lectora</title>
 </head>
 <body>
@@ -71,7 +78,7 @@ require '../../logic/compresion-lectora/compresion-lectora.php';
             <option value="" disabled selected>PERIODO</option>
             <?php seleccionarPeriodo($conexion); ?>
         </select>
-
+        <?php echo "<input type='hidden' name='idCiclo' value='$idCiclo'>"; ?>
         <input type="submit" value="Consultar" id="consultar" >
 
         </div>
@@ -87,8 +94,8 @@ require '../../logic/compresion-lectora/compresion-lectora.php';
 
          <?php if ($op=='mostrar'):  ?>
             <div class="encabezado-bit">
-                <h4>Calificaciones de Bimestre <?php echo $Bimestre;?></h4>
-                <button type="button" id='btnListaGruposPDF' onclick = "CamposCompletos()">Generar PDF </button>
+                <h4>Calificaciones de Compresion Lectora <?php echo $Bimestre;?></h4>
+                <button type="button" id='btnListaGruposPDF' onclick = "CamposCompletosCL()">Generar PDF </button>
                 
             </div>
         <?php endif ?>

@@ -20,6 +20,7 @@ function BitacoraPDF(){
 
 
 function CamposCompletos(){
+
     var idCiclo = getParameterByName('idCiclo');
     var idSalon = getParameterByName('idSalon');
     var idBimestre = getParameterByName('idBimestre');
@@ -34,9 +35,60 @@ function CamposCompletos(){
         }
     }
 
+    if(bandera){
+
+        var dir = '../../logic/generacionPDFs/calificacionesPDF.php?Bimestre='+idBimestre+'&Salon='+idSalon+'&Ciclo='+idCiclo+'';
+        window.location.replace(dir)
+    }else{
+        alert('No sean completado todos los campos');
+    }
+
+}
+
+
+function CamposCompletosCL(){
+    
+    var idCiclo = getParameterByName('Ciclo');
+    var idSalon = getParameterByName('idSalon');
+    var idPeriodo = getParameterByName('idPeriodo');
+    var elementos = document.getElementsByClassName("clCalificacion");
+    var bandera = true;
+
+    for(var i=0; i<elementos.length; i++) {
+        
+        if(elementos[i].value == ''){
+            bandera = false;
+        }
+    }
 
     if(bandera){
-        var dir = '../../logic/generacionPDFs/calificacionesPDF.php?Bimestre='+idBimestre+'&Salon='+idSalon+'&Ciclo='+idCiclo;
+        var dir = '../../logic/generacionPDFs/compresion-lectora.php?Periodo='+idPeriodo+'&Salon='+idSalon+'&Ciclo='+idCiclo+'';
+        window.location.replace(dir)
+    }else{
+        alert('No sean completado todos los campos');
+    }
+
+}
+
+function CamposCompletosInasistencias(){
+
+    var idCiclo = getParameterByName('idCiclo');
+    var idSalon = getParameterByName('idSalon');
+    var idBimestre = getParameterByName('idBimestre');
+
+    var elementos = document.getElementsByClassName("clCalificacion");
+    var bandera = true;
+
+    for(var i=0; i<elementos.length; i++) {
+        
+        if(elementos[i].value == ''){
+            bandera = false;
+        }
+    }
+
+    if(bandera){
+
+        var dir = '../../logic/generacionPDFs/inasistencias.php?Bimestre='+idBimestre+'&Salon='+idSalon+'&Ciclo='+idCiclo+'';
         window.location.replace(dir)
     }else{
         alert('No sean completado todos los campos');

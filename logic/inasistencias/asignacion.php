@@ -18,8 +18,9 @@ function NumeroInasistencias($id, $conexion){
 }
 
 function borrarInasistencia($Kardex, $Bimestre, $conexion){
-    try{    
-        $queryEliminar = "DELETE FROM inasistencias WHERE Boleta_id = $Kardex AND Bimestre_id = $Bimestre;";
+    try{     
+
+        $queryEliminar = "UPDATE inasistencias SET inasistencias='0' WHERE Boleta_id = $Kardex AND Bimestre_id = $Bimestre;";
         $conexion->query($queryEliminar);
     }catch(PDOException $e){
         echo "Error: ".$e->getMessage();

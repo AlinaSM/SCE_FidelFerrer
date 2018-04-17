@@ -9,8 +9,6 @@ function tablaAsignaturas( $idSalon,$Bimestre,$Ciclo, $conexion){
     $Asignatura = array();
     $nAsig = 0;
 
-    
-
     echo "<table class='tablaAlumnos' >";
     echo "<tr class='encabezadoTabla'><th>No.</th><th>CURP</th><th>Paterno</th><th>Materno</th><th>Nombre</th> ";
     

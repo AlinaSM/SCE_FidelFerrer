@@ -3,6 +3,10 @@ require '../../logic/info-escuela.php';
 require '../../logic/FechaHora.php';
 require '../../logic/ciclos.php';
 require '../../logic/conexion.php';
+
+error_reporting(E_ERROR | E_WARNING);
+$idCiclo = obtenerIdCiclo(date("Y"), date("Y") + 1, $conexion);
+
 $op = $_GET['op'];
 $Bimestre = $_GET['idBimestre'];
 ?>
@@ -71,9 +75,9 @@ $Bimestre = $_GET['idBimestre'];
                 <option value="4">4</option>
                 <option value="5">5</option>
             </select>
-
+            <?php echo "<input type='hidden' name='idCiclo' value='$idCiclo'>"; ?>
             <input type="submit" value="Consultar" id="consultar" >
-
+            
         </div>
         </form>
     </section>
@@ -93,7 +97,7 @@ $Bimestre = $_GET['idBimestre'];
         <?php 
                 require '../../logic/evaluaciones/asignaturas.php';
                 $op = $_GET['op'];
-                $idCiclo = obtenerIdCiclo(date("Y"), date("Y") + 1, $conexion);
+                
                 if($op == 'mostrar'){
                     tablaAsignaturas( $_GET['idSalon'],$_GET['idBimestre'],$idCiclo, $conexion);
                 }
